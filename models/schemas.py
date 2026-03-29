@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List
+from typing import List, Optional, TypedDict
 
 
 class Requirement(BaseModel):
@@ -15,53 +15,18 @@ class InputRequest(BaseModel):
 
 
 class OutputResponse(BaseModel):
-    requirements: List[Requirement]
+    requirements: List[dict]
     conflicts: List[str]
     approved: bool
     gherkin_output: List[str]
 
 
-class WorkflowState(BaseModel):
-    raw_input: str
-    cleaned_input: str = ""
-    requirements: List[Requirement] = []
-    conflicts: List[str] = []
-    approved: bool = False
-    gherkin_output: List[str] = []
-
-
-"""
-schemas.py — Pydantic models.
-
-IMPORTANT: Pydantic models use DOT NOTATION, not dict subscript.
-
-  req = Requirement(description="...")
-  req.description        correct
-  req["description"]     causes 'Requirement object is not subscriptable'
-
-If you need dict-style access, call: req.model_dump()["description"]
-"""
-
-from typing import TypedDict, Optional
-
-
 class WorkflowState(TypedDict):
-    # Input
     raw_input: str
-    input_type: str  # "brief" | "transcript"
-
-    # Agent outputs
-    requirements: list  # list[Requirement]
-    user_stories: list  # list[UserStory]
-    stories_with_criteria: list
+    cleaned_input: str
+    requirements: list
     conflicts: list
-    finalized_stories: list
-
-    # HITL
-    hitl_status: str  # "pending" | "approved" | "rejected"
-    hitl_feedback: Optional[str]
-
-    # Meta
-    current_agent: str
-    errors: list
+    approved: bool
+    gherkin_output: list
     run_id: str
+    hitl_status: str  # "pending" | "approved" | "rejected"

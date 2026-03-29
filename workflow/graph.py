@@ -3,7 +3,7 @@ from models.schemas import WorkflowState
 
 from agents.input_processor import InputProcessorAgent
 from agents.requirement_extractor import RequirementExtractorAgent
-from agents.semantic_duplicator import SemanticDeduplicatorAgent
+from agents.semantic_duplicator import SemanticduplicatorAgent
 from agents.conflict_detector import ConflictDetectorAgent
 from agents.acceptance_criteria_generator import AcceptanceCriteriaAgent
 from agents.human_approval_gate import HumanApprovalAgent
@@ -15,7 +15,7 @@ def build_graph():
 
     graph.add_node("input", InputProcessorAgent().run)
     graph.add_node("extract", RequirementExtractorAgent().run)
-    graph.add_node("dedup", SemanticDeduplicatorAgent().run)
+    graph.add_node("dedup", SemanticduplicatorAgent().run)
     graph.add_node("conflict", ConflictDetectorAgent().run)
     graph.add_node("ac", AcceptanceCriteriaAgent().run)
     graph.add_node("approval", HumanApprovalAgent().run)

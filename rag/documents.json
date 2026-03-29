@@ -1,0 +1,32 @@
+[
+  {
+    "title": "User Login",
+    "description": "User can login using email",
+    "priority": "medium",
+    "acceptance_criteria": [
+      "\"Given the user is on the login page, When they enter a valid email and password, Then they are redirected to the dashboard.\",",
+      "\"Given the user is on the login page, When they enter an invalid email or password, Then they see an 'Invalid Credentials' error message.\",",
+      "\"Given the user is on the login page, When they enter a valid email but an empty password, Then they see a 'Password is required' error message.\""
+    ]
+  },
+  {
+    "title": "Automatic Page Refresh",
+    "description": "When user logs in for the first time, it automatically refreshes the page",
+    "priority": "low",
+    "acceptance_criteria": [
+      "*Given the user is on the login page and it's their first login attempt, When they enter valid credentials and submit the form, Then the page automatically refreshes after a successful login.*",
+      "*Given the user is on the login page and it's not their first login attempt, When they enter valid credentials and submit the form, Then the page does not automatically refresh.*",
+      "*Given the user is on the login page and enters invalid credentials, When they submit the form, Then the page does not automatically refresh and displays an error message.*"
+    ]
+  },
+  {
+    "title": "Session Timeout",
+    "description": "System logs out after 5 minutes",
+    "priority": "high",
+    "acceptance_criteria": [
+      "Given the user is actively using the system, When 5 minutes pass since the last user action, Then the system logs out the user.",
+      "Given the user is idle for less than 5 minutes, When they perform another action, Then they remain logged in.",
+      "Given the user is idle for more than 5 minutes, When they try to access a protected page, Then they see a login page instead of the requested page."
+    ]
+  }
+]
