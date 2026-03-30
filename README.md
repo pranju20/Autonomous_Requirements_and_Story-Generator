@@ -5,11 +5,11 @@ Built a stateful multi-agent agentic AI system using LangGraph that autonomously
 1. Clone the repository
 bashgit clone https://github.com/pranju20/Autonomous_Requirements_and_Story-Generator.git
 cd Autonomous_Requirements_and_Story-Generator
-2. Create a virtual environment
-bashpython -m venv venv
+2. Create a virtual environment bash
+  # python -m venv venv
 
 Windows
-venv\Scripts\activate
+# venv\Scripts\activate
 
 3. Install dependencies
 bashpip install -r requirements.txt
